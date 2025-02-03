@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="inputForm" class="noPrint">
+            <form>
+                <label for="victimName">Name of recipient:</label><br>
+                <input type="text" id="victimName" name="victimName"><br>
+                <label for="userName">Name of presenter:</label><br>
+                <input type="text" id="userName" name="userName"><br>
+                <label for="userDate">Date to note:</label><br>
+                <input type="text" id="userDate" name="userDate"><br>
+                <label for="template">Certificate:</label><br>
+                <select id="template" name="template">
+                    <option value="disappointment">Disappointment</option>
+                    <option value="disappointment+">Extra Disappointment</option>
+                    <option value="disappointment++">Too Much Disappointment</option>
+                    <option value="memology+">Memology</option>
+                    <option value="memology">Some Memes</option>
+                    <option value="memology-">No Memology</option>
+                    <option value="certification">Certification</option>
+                    <option value="certification+">Certified Certificate</option>
+                    <option value="custom">Custom</option>
+                  </select>
+            </form>
+            <a href="javascript:void(0)" onclick="formValues.setAllText()">Submit</a>
+            <hr>
+        </section>
+        <section id="certificatePreview">
+            <h1 id="victim">test</h1>
+            <h2 id="user">test</h2>
+            <h3 id="notedDate">test</h3>
+            <div id="certificateDesign"></div>
+        </section>
+        <hr class="noPrint">
+        <a href="javascript:void(0)" class="noPrint" onclick="window.print()">Print</a>
+    </main>
+    <script src="app.js">
+
+    </script>
+</body>
+</html>
