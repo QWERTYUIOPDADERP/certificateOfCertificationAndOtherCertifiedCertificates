@@ -99,7 +99,7 @@ main:has(#print:hover) #certificateBackground{
 }
 
 @media print{
-    @page { size: auto;  margin: 0mm; }
+    @page { size: landscape;  margin: 0mm; }
     .noPrint {display: none;}
     #certificatePreview {
         transform: scale(1); 
