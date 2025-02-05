@@ -1,35 +1,35 @@
+/* Form values */
 let formValues = {
-    name: document.getElementById('victimName'),
-    user: document.getElementById('userName'),
-    date: document.getElementById('userDate'),
-    background: document.getElementById('template'),
+    name: document.getElementById('victimName'), /* Reciever name input */
+    user: document.getElementById('userName'), /* Giver name input */
+    date: document.getElementById('userDate'), /* Date input */
+    background: document.getElementById('template'), /* Background input */
     setAllText: function(){
-        if(this.date.value){
+        if(this.date.value){ /* Checks if the date has a value */
             certificate.setAllText(this.name.value,this.user.value,this.date.value);
         } else {
             certificate.setTextNotDate(this.name.value,this.user.value);
         }
     },
-    setBackground: function(){
-        console.log(this.background.value);
+    setBackground: function(){ /* Sets the background to match the form value */
         certificate.setBackground(this.background.value);
     },
-    setAll: function(){
+    setAll: function(){ /* Sets the background and the text */
         this.setAllText();
         this.setBackground();
     }
 };
 
 let certificate = {
-    Name: document.getElementById('victim'),
-    user: document.getElementById('user'),
-    date: document.getElementById('notedDate'),
-    background: document.getElementById('certificateBackground'),
+    Name: document.getElementById('victim'), /* Reciever name text element */
+    user: document.getElementById('user'), // Giver name text element
+    date: document.getElementById('notedDate'), // Date text element
+    background: document.getElementById('certificateBackground'), // Background text element
 
-    setText: function(element, text){
+    setText: function(element, text){ // Sets the element's text to a string input
         element.innerHTML = text;
     },
-    setAllText: function(victimName, userName, date){
+    setAllText: function(victimName, userName, date){ // Sets all text elements to match three strings
         if(victimName){
             this.setText(this.Name,victimName);
         }
@@ -38,7 +38,7 @@ let certificate = {
         }
         this.setText(this.date,date);
     },
-    setTextNotDate: function(victimName, userName){
+    setTextNotDate: function(victimName, userName){ // Sets all text elements excluding the date
         if(victimName){
             this.setText(this.Name,victimName);
         }
@@ -46,12 +46,12 @@ let certificate = {
             this.setText(this.user,userName);
         }
     },
-    setDate: function(date){
+    setDate: function(date){ // Sets only the date text element
         this.setText(this.date,date);
     },
-    setBackground: function(str){
-        this.background.src = "images/"+str+".png";
-        if(str.includes('Cert')){
+    setBackground: function(str){ // Sets the background based on a string input
+        this.background.src = "images/"+str+".png"; // Formats the string to look like the image's url
+        if(str.includes('Cert')){ // Moves text position based on certificate type
             this.user.style.top = "66%";
             this.date.style.top = "65%";
         } else {
@@ -59,22 +59,18 @@ let certificate = {
             this.date.style.top = "75%";
         }
     },
-    print: function(){
+    print: function(){ // opens the print dialogue
         window.print()
     }
 };
 
-function setDate(){
-    let date = new Date();
-    let now = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay();
-    certificate.setDate(now);
+function setDate(){ // Sets the date to the current date
+    let date = new Date(); // Gets an instance of the Date
+    let now = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay(); // Formats a string with the date information
+    certificate.setDate(now); // Sets the date to the formatted string
 }
 
-function setCertificate(){
-    formValues.setBackground();
-}
-
-function onLoad(){
-    setDate();
-    setCertificate();
+function onLoad(){ // Called on first site load
+    setDate(); // Sets the date to the current date
+    formValues.setBackground(); // Formats the background so the text is in the correct position
 }
