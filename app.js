@@ -4,9 +4,12 @@ let formValues = {
     user: document.getElementById('userName'), /* Giver name input */
     date: document.getElementById('userDate'), /* Date input */
     background: document.getElementById('template'), /* Background input */
+    formattedDate: "",
     setAllText: function(){
         if(this.date.value){ /* Checks if the date has a value */
-            certificate.setAllText(this.name.value,this.user.value,this.date.value);
+            this.formattedDate = this.date.value.split('-');
+            this.formattedDate = parseInt(this.formattedDate[1])+"/"+parseInt(this.formattedDate[2])+"/"+this.formattedDate[0];
+            certificate.setAllText(this.name.value,this.user.value,this.formattedDate);
         } else {
             certificate.setTextNotDate(this.name.value,this.user.value);
         }
@@ -66,11 +69,12 @@ let certificate = {
 
 function setDate(){ // Sets the date to the current date
     let date = new Date(); // Gets an instance of the Date
-    let now = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay(); // Formats a string with the date information
+    // let now = "test";
+    let now = (date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear(); // Formats a string with the date information
     certificate.setDate(now); // Sets the date to the formatted string
 }
 
 function onLoad(){ // Called on first site load
-    setDate(); // Sets the date to the current date
     formValues.setBackground(); // Formats the background so the text is in the correct position
+    setDate(); // Sets the date to the current date
 }
