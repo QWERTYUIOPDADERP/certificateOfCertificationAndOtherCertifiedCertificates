@@ -115,7 +115,7 @@ main:has(#print:hover) #certificateBackground{
     }
 }
 
-@media only screen and (max-width: 1675px) {
+@media only screen and (max-width: 1680px) {
     #inputForm{
         margin: 10%;
     }
